@@ -1,4 +1,26 @@
- g_nStepCount++;
+#include <Stdlib.h>
+#include <String.h>
+
+
+ int g_nInputNodes=0;
+ int g_nOutputNodes=0;
+
+ int g_nStepCount=0;
+
+int s1 ;
+static float square = 0, triang = -1, square_a = 0, vale = 0, corrente=0,d,m=0,dm;
+float pi = 3.141592, fs = 50000;
+
+
+//ceficientes do controlador 
+static  float  a0 = 1.0, b0 =-0.1754 , b1 = 0.1839, vel_rad  ;
+
+//Declaração das variaveis
+static  float ez0 = 0.0, ez1 = 0.0, uz1 = 0.0, u = 0.0;
+
+static float kv =  0.0125, Iref = 30.0;
+
+g_nStepCount++;
 
 // In case of error, uncomment next two lines. Set *pnError to 1 and copy Error message to szErrorMsg
  //*pnError=1;
