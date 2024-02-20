@@ -1,0 +1,59 @@
+ g_nStepCount++;
+
+// In case of error, uncomment next two lines. Set *pnError to 1 and copy Error message to szErrorMsg
+ //*pnError=1;
+ //strcpy(szErrorMsg, "Place Error description here.");
+
+if (sin(2*pi*fs*t ) >= 0)  // o t é a minha amostragem definida no controle de simulação ? o espaçamento é a amostragem
+{
+	square = 1;
+}
+else
+{
+	square = -1;
+}
+
+triang = triang + delt*square*4*fs;    // delt = time step
+if ( (square_a < 0 ) && (square >0)){	
+// no momento em que a quadrada passa de baixo para alto, indica que esta num vale na portadora 
+	vale = 1;
+	corrente = in[2];
+	vel_rad = 0;//( in[1]*2*pi)/60; // velocidade em rad/s  ((velocidade*2*3.14)/60)/48
+	ez0 = (Iref - corrente);
+	u =( ez1*b0 + ez0*b1 + uz1);
+	ez1 = ez0;
+	uz1 = u;
+	m = (u+vel_rad*kv)/48;
+//m = 0.1;
+
+	if(t>2.7224490e-002){
+		vale = 1;
+		Iref = 45;
+		
+	}
+
+}
+else
+{
+	vale = 0;
+	
+}
+
+square_a = square;
+
+if(m>triang)
+{
+	s1 = 1;
+}
+else
+{
+	s1 = 0;
+}
+
+
+out[0] = corrente;
+out[1] = s1;
+out[2] = triang;
+//out[2] =vale;
+out[3] = m;  // o vcc*m/(2*R)  valor de regime 
+out[4] = Iref;
