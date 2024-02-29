@@ -1,7 +1,8 @@
 **Modelagem e Controle de Máquina BLDC no software PSIM**
 * Autor: Ricardo Rodrigues Rapozo
 * [LinkedIn](www.linkedin.com/in/ricardo-rodrigues-rapozo-569560227)  
-  
+* PSIM 9.1.1
+* MatLab 2019a  
 **Descrição**
 Este trabalho focaliza o controle de conjugado em motores BLDC, explorando a
 manipulação eficaz do conjugado por meio do controle da corrente da máquina. Inicialmente,
